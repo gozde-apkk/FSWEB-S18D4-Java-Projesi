@@ -3,6 +3,7 @@ package com.workintech.jpamany.controller;
 import com.workintech.jpamany.entity.Customer;
 import com.workintech.jpamany.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 
 
 @RestController
+@Validated
 @RequestMapping("/customers")
 public class CustomerController {
 
