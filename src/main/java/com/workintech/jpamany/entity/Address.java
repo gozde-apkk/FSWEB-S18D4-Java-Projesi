@@ -1,6 +1,7 @@
 package com.workintech.jpamany.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,7 +26,7 @@ public class Address {
     private String description;
     @Column(name = "no")
     private int no;
-
+    @JsonIgnore
     @OneToOne(mappedBy = "address", cascade = {CascadeType.DETACH, CascadeType.MERGE,
     CascadeType.PERSIST, CascadeType.REFRESH})
     private Customer customer;
