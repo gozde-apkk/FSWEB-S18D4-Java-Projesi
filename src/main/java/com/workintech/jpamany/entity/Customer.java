@@ -1,9 +1,13 @@
 package com.workintech.jpamany.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -15,9 +19,9 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name = "firstname")
+    @Column(name = "first_name")
     private String firstname;
-    @Column(name = "lastname")
+    @Column(name = "last_name")
     private String lastname;
     @Column(name = "email")
     private String email;
@@ -28,5 +32,16 @@ public class Customer {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Account> accountList = new ArrayList<>();
+
+    public void add(Account account){
+//        if(accountList == null){
+//            accountList = new ArrayList<>();
+//        }
+        accountList.add(account);
+    }
 
 }
