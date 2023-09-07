@@ -26,6 +26,8 @@ public class Address {
     private String description;
     @Column(name = "no")
     private int no;
+
+
     @JsonIgnore
     @OneToOne(mappedBy = "address", cascade = {CascadeType.DETACH, CascadeType.MERGE,
     CascadeType.PERSIST, CascadeType.REFRESH})
